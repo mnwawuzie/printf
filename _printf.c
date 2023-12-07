@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			{
 				char *string_arg = va_arg(args, char*);
 
-				string_arg_len = strlen(string_arg);
+				string_arg_len = (int)strlen(string_arg);
 
 				for (j = 0; j < string_arg_len; j++)
 				{
