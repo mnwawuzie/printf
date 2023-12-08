@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-        int num_of_bytes, string_arg_len, i, j = 0;
+        int num_of_bytes, string_arg_len, i = 0;
         char nextChar;
 
         va_list args;
@@ -32,13 +32,14 @@ int _printf(const char *format, ...)
                         {
                                 char *string_arg = va_arg(args, char*);
 
-                                string_arg_len = strlen(string_arg);
 
-                                for ( j = 0; j < string_arg_len; j++)
+				while(string_arg[string_arg_len])
                                 {
-                                        _putchar(string_arg[j]);
-                                }
-                                num_of_bytes = num_of_bytes + string_arg_len - 1;
+					write(1, &string_arg[string_arg_len], 1);
+                                	string_arg_len++;
+				}
+                                break;
+				num_of_bytes = num_of_bytes + string_arg_len - 1;
                         }
                         else if (nextChar == '%')
                         {
